@@ -1,0 +1,13 @@
+[
+    {
+        "model": "meta-llama/Llama-3.1-70B-Instruct",
+        "model_client_cls": "APIModelClient",
+        "device": "cpu",
+        "n": 1,
+        "params": {
+            "temperature": 1.0,
+            "max_new_tokens": 1024,
+            "stream": false
+        }
+    }
+]

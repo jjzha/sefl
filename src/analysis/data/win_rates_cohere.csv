@@ -1,0 +1,11 @@
+model,wins,total,win_rate
+src/analysis/data/Qwen-Qwen2.5-14B-Instruct_seed5_inference.csv,28,31,90.32258064516128
+src/analysis/data/meta-llama-Llama-3.1-8B-Instruct_seed4_inference.csv,26,31,83.87096774193549
+src/analysis/data/meta-llama-Llama-3.2-3B-Instruct_seed3_inference.csv,23,31,74.19354838709677
+src/analysis/data/meta-llama-Llama-3.2-1B-Instruct_seed2_inference.csv,24,33,72.72727272727273
+src/analysis/data/jjzha-Qwen2.5-0.5B-Instruct-SEFI_seed1_inference.csv,21,34,61.76470588235294
+src/analysis/data/Qwen-Qwen2.5-0.5B-Instruct_seed1_inference.csv,11,34,32.35294117647059
+src/analysis/data/jjzha-Llama-3.2-3B-Instruct-SEFI_seed3_inference.csv,8,31,25.806451612903224
+src/analysis/data/jjzha-Llama-3.2-1B-Instruct-SEFI_seed2_inference.csv,8,33,24.242424242424242
+src/analysis/data/jjzha-Llama-3.1-8B-Instruct-SEFI_seed4_inference.csv,5,31,16.129032258064516
+src/analysis/data/jjzha-Qwen2.5-14B-Instruct-SEFI_seed5_inference.csv,3,31,9.67741935483871

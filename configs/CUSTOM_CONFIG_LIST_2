@@ -1,0 +1,12 @@
+[
+    {
+        "model": "meta-llama/Llama-3.1-8B-Instruct",
+        "model_client_cls": "CustomModelClient",
+        "device": "cuda",
+        "n": 1,
+        "params": {
+            "temperature": 0.9,
+            "max_new_tokens": 1024
+        }
+    }
+]
