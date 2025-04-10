@@ -1,6 +1,6 @@
 #!/bin/sh
 #SBATCH --partition=standard-g 
-#SBATCH --account=project_465001263 
+#SBATCH --account=project_xxxxxxxxx 
 #SBATCH --nodes=1 
 #SBATCH --ntasks-per-node=1
 #SBATCH --gpus-per-node=8
@@ -8,16 +8,16 @@
 #SBATCH --cpus-per-task=56
 #SBATCH --time=2:00:00
 #SBATCH --job-name=syntethic_post_training
-#SBATCH --output=/scratch/project_465001263/synthetic-edu-cache/synthetic_%A_%a.out
-#SBATCH --error=/scratch/project_465001263/synthetic-edu-cache/synthetic_%A_%a.ERROR.out
+#SBATCH --output=/scratch/project_xxxxxxxxx/synthetic-edu-cache/synthetic_%A_%a.out
+#SBATCH --error=/scratch/project_xxxxxxxxx/synthetic-edu-cache/synthetic_%A_%a.ERROR.out
 
 # Set up the software environment
 module use /appl/local/training/modules/AI-20240529/
 module load singularity-userfilesystems singularity-CPEbits
 
-CONTAINER=/scratch/project_465001263/synthetic-edu/lumi-pytorch-rocm-6.1.3-python-3.12-pytorch-v2.4.1.sif
+CONTAINER=/scratch/project_xxxxxxxxx/synthetic-edu/lumi-pytorch-rocm-6.1.3-python-3.12-pytorch-v2.4.1.sif
 
-SCRATCH=/scratch/project_465001263/synthetic-edu-cache
+SCRATCH=/scratch/project_xxxxxxxxx/synthetic-edu-cache
 export TORCH_HOME=$SCRATCH/.torch-cache
 export HF_HOME=$SCRATCH/.hf-cache
 export TOKENIZERS_PARALLELISM=false
@@ -35,7 +35,7 @@ do
     echo "Removing old cache..."
     rm -rf $HF_HOME/datasets
 
-    srun singularity exec -B /scratch/project_465001263/ \
+    srun singularity exec -B /scratch/project_xxxxxxxxx/ \
          $CONTAINER \
             bash -c "\$WITH_CONDA; \
                      export TORCH_HOME=$TORCH_HOME; \
@@ -59,5 +59,5 @@ do
                             --logging_steps 1 \
                             --eval_strategy epoch \
                             --save_strategy epoch \
-                            --output_dir /scratch/project_465001263/synthetic-edu-cache/tmp_2/$(basename $MODEL | tr / -)-sft-synthetic"
+                            --output_dir /scratch/project_xxxxxxxxx/synthetic-edu-cache/tmp_2/$(basename $MODEL | tr / -)-sft-synthetic"
 done
