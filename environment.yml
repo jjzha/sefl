@@ -159,6 +159,7 @@ dependencies:
       - pyairports==2.1.1
       - pyarrow==17.0.0
       - pyasn1==0.6.1
+      - pyautogen==0.2.4
       - pycountry==24.6.1
       - pydantic==2.9.2
       - pydantic-core==2.23.4

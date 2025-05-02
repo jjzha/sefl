@@ -11,6 +11,10 @@ This Github repository accomodates the paper: **SEFL: Harnessing Large Language 
 }
 ```
 
+## Requirements
+
+We ran the code on Python 3.12 find the conda environment we used in `environment.yml`.
+
 ## 1. Getting the synthetic data
 Note that the data is readily available on Huggingface: https://huggingface.co/datasets/jjzha/sefl
 
