@@ -1,4 +1,4 @@
-name: autogen-lumi
+name: sefl
 channels:
   - conda-forge
   - defaults
