@@ -3,12 +3,7 @@
 This Github repository accomodates the paper: **SEFL: Harnessing Large Language Model Agents to Improve Educational Feedback Systems**
 
 ```
-@article{zhang2025sefl,
-  title={SEFL: Harnessing Large Language Model Agents to Improve Educational Feedback Systems},
-  author={Zhang, Mike and Dilling, Amalie Pernille and Gondelman, L{\'e}on and Lyngdorf, Niels Erik Ruan and Lindsay, Euan D and Bjerva, Johannes},
-  journal={arXiv preprint arXiv:2502.12927},
-  year={2025}
-}
+Coming soon
 ```
 
 ## Requirements
