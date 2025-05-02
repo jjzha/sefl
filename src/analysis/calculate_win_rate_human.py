@@ -100,7 +100,7 @@ def compute_model_human_stats(keys_csv, human_csv_files, output_csv):
 if __name__ == "__main__":
     # File paths (adjust as needed)
     keys_csv = "src/analysis/human/keys.csv"
-    human_csv_files = ["src/analysis/human/amalie.csv", "src/analysis/human/leon.csv", "src/analysis/human/niels.csv"]
+    human_csv_files = ["src/analysis/human/h1.csv", "src/analysis/human/h2.csv", "src/analysis/human/h3.csv"]
     output_csv = "model_human_stats.csv"
     
     # Compute and save the model-centered statistics.
