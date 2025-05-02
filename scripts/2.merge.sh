@@ -10,27 +10,14 @@
 #SBATCH --job-name=merge_all
 #SBATCH --output=/scratch/project_xxxxxxxxxx/synthetic-edu-cache/merge_all_%A.out
 
-# Debug mode for verbose output
 set -x
-
-# Load modules
 module use /appl/local/training/modules/AI-20240529/
 module load singularity-userfilesystems singularity-CPEbits
 
-# Container
 CONTAINER=/scratch/project_xxxxxxxxxx/synthetic-edu/lumi-pytorch-rocm-6.1.3-python-3.12-pytorch-v2.4.1.sif
 
-# Arrays of checkpoint dirs, output paths, and model dirs
-CHECKPOINT_DIRS=(
-    "/scratch/project_xxxxxxxxxx/synthetic-edu-cache/tmp/Llama-3.2-3B-Instruct-sft-synthetic/checkpoint-36/pytorch_model_fsdp_0/"
-    "/scratch/project_xxxxxxxxxx/synthetic-edu-cache/tmp/Llama-3.1-8B-Instruct-sft-synthetic/checkpoint-36/pytorch_model_fsdp_0/"
-    "/scratch/project_xxxxxxxxxx/synthetic-edu-cache/tmp/Qwen2.5-14B-Instruct-sft-synthetic/checkpoint-36/pytorch_model_fsdp_0/"
-)
-OUTPUT_DIRS=(
-    "/scratch/project_xxxxxxxxxx/synthetic-edu-cache/upload/Llama-3.2-3B-Instruct-SEFI/"
-    "/scratch/project_xxxxxxxxxx/synthetic-edu-cache/upload/Llama-3.1-8B-Instruct-SEFI/"
-    "/scratch/project_xxxxxxxxxx/synthetic-edu-cache/upload/Qwen2.5-14B-Instruct-SEFI/"
-)
+CHECKPOINT_DIRS=()
+OUTPUT_DIRS=()
 
 MAX_SHARD_SIZE="10GB"
 
@@ -46,7 +33,5 @@ for i in "${!CHECKPOINT_DIRS[@]}"; do
          " &
 done
 
-# Wait for all background jobs to finish
 wait
-
 echo "All merges are complete!"

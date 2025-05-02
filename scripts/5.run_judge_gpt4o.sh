@@ -10,37 +10,20 @@
 #SBATCH --mem=16G
 #SBATCH --time=04:00:00
 
-# ------------------------------
-# Singularity container path
-# ------------------------------
 CONTAINER=/scratch/project_xxxxxxxxxx/synthetic-edu/lumi-pytorch-rocm-6.1.3-python-3.12-pytorch-v2.4.1.sif
-
-# ------------------------------
-# HPC Modules (if needed)
-# ------------------------------
 module use /appl/local/training/modules/AI-20240529/
 module load singularity-userfilesystems singularity-CPEbits
 
-# ------------------------------
-# OpenAI API Key
-# ------------------------------
 export OPENAI_API_KEY="XXXX"
 
-# ------------------------------
-# Paths / Environment
-# ------------------------------
 SCRATCH=/scratch/project_xxxxxxxxxx/synthetic-edu-cache
 export TORCH_HOME=$SCRATCH/.torch-cache
 export HF_HOME=$SCRATCH/.hf-cache-gpt4-judge
 mkdir -p $TORCH_HOME $HF_HOME
 
-# Adjust if needed
-INPUT_CSV="/scratch/project_xxxxxxxxxx/synthetic-edu/src/analysis/data/annotation_file.csv"
-OUTPUT_CSV="/scratch/project_xxxxxxxxxx/synthetic-edu-cache/tmp_2/results_gpt4.csv"
+INPUT_CSV=""
+OUTPUT_CSV=""
 
-# ------------------------------
-# Run command inside container
-# ------------------------------
 echo "Starting GPT-4 judge script..."
 
 srun singularity exec -B /scratch/project_xxxxxxxxxx/ \

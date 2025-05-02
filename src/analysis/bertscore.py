@@ -4,7 +4,7 @@ import numpy as np
 
 bertscore = load("bertscore")
 
-with open("_processed_output/output_qwen.json", "r") as f_in:
+with open("", "r") as f_in:
     avg_results = []
     for line in f_in:
         data = json.loads(line)

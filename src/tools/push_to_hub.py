@@ -4,11 +4,7 @@ import json
 from huggingface_hub import HfApi, login
 
 def main():
-    # Hard-code or retrieve your HF token however you prefer
-    hf_token = ""
-    
-    # Log into Hugging Face Hub once per process
-    login(token=hf_token)
+    login()
     api = HfApi()
 
     # The directory name is passed in as the first argument

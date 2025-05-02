@@ -11,23 +11,19 @@
 #SBATCH --output=/scratch/project_xxxxxxxxx/synthetic-edu-cache/synthetic_%A_%a.out
 #SBATCH --error=/scratch/project_xxxxxxxxx/synthetic-edu-cache/synthetic_%A_%a.ERROR.out
 
-# Set up the software environment
+
 module use /appl/local/training/modules/AI-20240529/
 module load singularity-userfilesystems singularity-CPEbits
 
 CONTAINER=/scratch/project_xxxxxxxxx/synthetic-edu/lumi-pytorch-rocm-6.1.3-python-3.12-pytorch-v2.4.1.sif
-
 SCRATCH=/scratch/project_xxxxxxxxx/synthetic-edu-cache
+
 export TORCH_HOME=$SCRATCH/.torch-cache
 export HF_HOME=$SCRATCH/.hf-cache
 export TOKENIZERS_PARALLELISM=false
 mkdir -p $TORCH_HOME $HF_HOME
 
-# List of models
-MODELS=(
-    "Qwen/Qwen2.5-0.5B-Instruct"
-    "meta-llama/Llama-3.2-1B-Instruct"
-)
+MODELS=()
 
 for MODEL in "${MODELS[@]}"
 do
@@ -59,5 +55,6 @@ do
                             --logging_steps 1 \
                             --eval_strategy epoch \
                             --save_strategy epoch \
-                            --output_dir /scratch/project_xxxxxxxxx/synthetic-edu-cache/tmp_2/$(basename $MODEL | tr / -)-sft-synthetic"
+                            --output_dir $SCRATCH/model_checkpoints/$(basename $MODEL | tr / -)-sft-synthetic" \
+                            
 done

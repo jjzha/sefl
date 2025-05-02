@@ -29,7 +29,6 @@ def main():
     if not openai.api_key:
         raise ValueError("Please set the OPENAI_API_KEY environment variable.")
 
-    # Read the input CSV
     df = pd.read_csv(args.input_csv)
     results = []
 
@@ -39,7 +38,6 @@ def main():
         model_a_feedback = row.get("model_a", "")
         model_b_feedback = row.get("model_b", "")
 
-        # Construct a system+user prompt instructing GPT-4 to pick either A or B
         messages = [
             {
                 "role": "user",
@@ -67,7 +65,6 @@ def main():
             print(f"Error calling OpenAI API on row {idx}: {e}")
             raw_text = "ERROR"
 
-        # Extract 'A' or 'B' from the raw_text (fall back to 'UNKNOWN' if not found)
         verdict_char = "UNKNOWN"
         if raw_text.upper().startswith("A"):
             verdict_char = "A"
@@ -83,10 +80,8 @@ def main():
             "raw_response": raw_text
         })
 
-        # Optional: delay to avoid hitting rate limits
         sleep(0.5)
 
-    # Save the results
     out_df = pd.DataFrame(results)
     out_df.to_csv(args.output_csv, index=False)
     print(f"Done. Wrote results to: {args.output_csv}")

@@ -12,14 +12,11 @@
 #SBATCH --time=02:00:00
 #SBATCH --exclude=nid005003,nid007971,nid007972
 
-# Load required modules
+
 module use /appl/local/training/modules/AI-20240529/
 module load singularity-userfilesystems singularity-CPEbits
-
-# Set path to your container
 CONTAINER=/scratch/project_xxxxxxxxxx/synthetic-edu/lumi-pytorch-rocm-6.1.3-python-3.12-pytorch-v2.4.1.sif
 
-# Setup caching directories
 SCRATCH=/scratch/project_xxxxxxxxxx/synthetic-edu-cache
 export TORCH_HOME=$SCRATCH/.torch-cache
 export HF_HOME=$SCRATCH/.hf-cache-multinode
@@ -31,11 +28,7 @@ export NCCL_SOCKET_IFNAME=hsn
 export NCCL_NET_GDR_LEVEL=PHB
 
 # Define the models you want to train
-MODELS=(
-    "meta-llama/Llama-3.2-3B-Instruct"
-    "meta-llama/Llama-3.1-8B-Instruct"
-    "Qwen/Qwen2.5-14B-Instruct"
-)
+MODELS=()
 
 NUM_PROCESSES=$(expr $SLURM_NNODES \* $SLURM_GPUS_PER_NODE)
 MAIN_PROCESS_IP=$(hostname -i)
@@ -55,7 +48,7 @@ do
         --main_process_ip=$MAIN_PROCESS_IP \
       src/post_training/fine_tune.py \
         --model_name_or_path $MODEL \
-        --dataset_name xxxxxxx \ ### CHANGE DATASET
+        --dataset_name ""
         --packing \
         --bf16 \
         --learning_rate 2.0e-5 \
@@ -67,7 +60,7 @@ do
         --logging_steps 1 \
         --eval_strategy epoch \
         --save_strategy epoch \
-        --output_dir $SCRATCH/tmp_2/$(basename $MODEL | tr / -)-sft-synthetic
+        --output_dir $SCRATCH/model_checkpoints/$(basename $MODEL | tr / -)-sft-synthetic
     "
 
     srun singularity exec -B /scratch/project_xxxxxxxxxx/ \
