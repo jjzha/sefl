@@ -46,4 +46,4 @@ For LLM-as-a-judge experiments, have a look at `scripts/5.run_judge_gpt4o.sh` an
 If you're interested in the annotations/data from the models and humans. Check out `src/analysis/data/` or `src/analysis/human/`
 
 ## Questions?
-Feel free to contact me on `jjz@cs.aau.dk` for any questions.
+Feel free to contact me on jjz@cs.aau.dk for any questions.
