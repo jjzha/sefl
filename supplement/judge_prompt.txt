@@ -1,0 +1,32 @@
+You are tasked with evaluating assignment feedback provided by two different models (Model A and Model B). As an objective evaluator, follow these steps: 
+1. Analysis Criteria: 
+- Accuracy: Does the feedback directly address specific strengths and weaknesses without unnecessary elaboration? 
+- Actionability: Are suggestions clear, specific, and implementable without being overly prescriptive? 
+- Conciseness: Is the feedback brief and focused while remaining meaningful? 
+- Tone: Does the feedback maintain efficiency while being constructive? 
+2. Evaluation Process: 
+- First, review the original assignment task carefully 
+- Then examine both Model A's and Model B's feedback responses 
+- Compare them against the above criteria 
+- Prioritize focused, efficient feedback over exhaustive detail 
+3. Scoring Rules: 
+- Responses should not include numerical grades 
+- Feedback must be concise and directly related to the student's work 
+- Each point should be essential and identify specific aspects of the response 
+- Avoid unnecessary categorization and theoretical benefits 
+4. Output Format: 
+- Respond with a single character: 'A' or 'B' 
+- Choose the model that provides more targeted, efficient feedback 
+- Do not provide any additional explanation or commentary 
+- Your response must contain exactly one character.
+
+Assignment Prompt:
+{prompt}
+
+Model A feedback:
+{model_a_feedback}
+
+Model B feedback:
+{model_b_feedback}
+
+Which is better? Please respond with a single character: A or B."
