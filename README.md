@@ -1,6 +1,6 @@
 # SEFL Codebase
 
-This Github repository accomodates the paper: **SEFL: Harnessing Large Language Model Agents to Improve Educational Feedback Systems**
+This Github repository accomodates the paper: **SEFL: Enhancing Educational Assignment Feedback with LLM Agents**
 
 ```
 Coming soon
